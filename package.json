@@ -1,17 +1,24 @@
 {
   "name": "html-dist",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Generates HTML with your minified JavaScript in it",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/mocha test"
   },
-  "author": "",
+  "bin": {
+    "html-dist": "cli.js"
+  },
+  "author": "Jack Franklin",
   "license": "ISC",
   "dependencies": {
     "cheerio": "^0.19.0",
     "html-minifier": "^0.7.0",
     "lodash": "^3.6.0",
     "yargs": "^3.6.0"
+  },
+  "devDependencies": {
+    "expect.js": "^0.3.1",
+    "mocha": "^2.2.1"
   }
 }
