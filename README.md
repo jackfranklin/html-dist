@@ -4,6 +4,7 @@ Takes a HTML file and edits its `script` tags.
 
 ```
 npm install --global html-dist
+```
 
 ## Usage
 
