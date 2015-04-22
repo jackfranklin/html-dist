@@ -12,6 +12,7 @@ p.out = function(shouldMinify) {
   if(shouldMinify) {
     return minify(this.$.html(), {
       collapseWhitespace: true,
+      removeAttributeQuotes: true,
       removeComments: true
     });
   } else {
