@@ -41,6 +41,8 @@ Will output:
 
 `-i file` or `--insert file`: appends a script tag to the `body` tag for the filename
 
+`--insertInHead`: appends script to `head` tag instead of body, which is good for Angular projects.
+
 `-o output.html` or `--output output.html`: write file instead of printing to STDOUT.
 
 ## Multiple Inserts
@@ -49,6 +51,12 @@ You can insert many files into the HTML:
 
 ```sh
 html-dist index.html --insert foo.js --insert bar.js
+```
+
+### Insert Script Tags in Head
+
+```sh
+html-dist index.html --insert foo.js --insert bar.js --insertInHead
 ```
 
 
