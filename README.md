@@ -56,7 +56,7 @@ html-dist index.html --insert foo.js --insert bar.js
 ### Insert Script Tags in Head
 
 ```sh
-html-dist index.html --insert foo.js --insert bar.js --insertInHead
+html-dist index.html --insert foo.js --insert bar.js --insert-in-head
 ```
 
 

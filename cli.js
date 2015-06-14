@@ -15,7 +15,7 @@ if(args.r || args['remove-all']) {
   dist.removeAll();
 }
 
-var shouldInsertTagInHead = args.insertInHead ? true : false;
+var shouldInsertTagInHead = args['insert-in-head'] ? true : false;
 
 var insertArgs = Array.isArray(args.i) ? args.i : [args.i];
 insertArgs = insertArgs.concat(Array.isArray(args.insert) ? args.insert : [args.insert]);
