@@ -41,7 +41,7 @@ Will output:
 
 `-i file` or `--insert file`: appends a script tag to the `body` tag for the filename
 
-`--insertInHead`: appends script to `head` tag instead of body, which is good for Angular projects.
+`--insert-in-head`: appends script to `head` tag instead of body, which is good for Angular projects.
 
 `-o output.html` or `--output output.html`: write file instead of printing to STDOUT.
 
