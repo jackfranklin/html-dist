@@ -15,10 +15,12 @@ if(args.r || args['remove-all']) {
   dist.removeAll();
 }
 
+var shouldInsertTagInHead = args['insert-in-head'] ? true : false;
+
 var insertArgs = Array.isArray(args.i) ? args.i : [args.i];
 insertArgs = insertArgs.concat(Array.isArray(args.insert) ? args.insert : [args.insert]);
 insertArgs.filter(function(x) { return !!x; }).forEach(function(path) {
-  dist.insertScript(path);
+  dist.insertScript(path, shouldInsertTagInHead);
 });
 
 var outputFile = args.o || args.output;

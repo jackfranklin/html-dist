@@ -24,8 +24,9 @@ p.removeAll = function() {
   return this;
 }
 
-p.insertScript = function(src) {
-  this.$('body').append("<script src='" + src + "'></script>");
+p.insertScript = function(src, shouldInsertTagInHead) {
+  var location = shouldInsertTagInHead ? 'head' : 'body';
+  this.$(location).append("<script src='" + src + "'></script>");
 }
 
 module.exports = HtmlDist;
