@@ -1,5 +1,5 @@
-var HtmlDist = require('../index');
-var expect = require('expect.js');
+import HtmlDist from '../src/index';
+import expect from 'expect.js';
 
 describe('removeAll', function() {
   it('removes all script tags', function() {
@@ -31,6 +31,6 @@ describe('insertScript', function() {
 
   it('appends the script tag', function() {
     dist.insertScript('foo.js');
-    expect(dist.out(true)).to.contain('</p><script src="foo.js"')
+    expect(dist.out(true)).to.contain('</p><script src=foo.js')
   });
 });
