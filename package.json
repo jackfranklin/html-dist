@@ -26,6 +26,8 @@
     "cheerio": "^0.20.0",
     "html-minifier": "^0.7.0",
     "lodash": "^3.6.0",
+    "vdom-to-html": "^2.2.0",
+    "virtual-dom": "^2.1.1",
     "yargs": "^3.6.0"
   },
   "devDependencies": {
