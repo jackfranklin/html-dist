@@ -14,8 +14,12 @@ class TreeManipulator {
     const match = select(query);
     const newChildren = this.tree.children.filter((c) => !match.matches(c));
     this.tree.children = newChildren;
-    console.log(this.tree.tagName);
-    return this.tree;
+    return this;
+  }
+
+  append(node) {
+    this.tree.children.push(node);
+    return this;
   }
 
   replaceWith(children, attributes = []) {
