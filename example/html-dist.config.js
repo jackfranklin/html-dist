@@ -5,6 +5,8 @@ import {
 } from '../src/index';
 
 export default {
+  // TODO: make inputFile be here and not CLI arg?
+  outputFile: 'example/dist/index.html',
   head: {
     edits: [
       function(html) {

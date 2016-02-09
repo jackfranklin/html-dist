@@ -15,10 +15,9 @@ function processTree(allConfig, node) {
 
 function prepend(node, prepends) {
   prepends.reverse().forEach((prepend) => {
-    console.log('prepend', prepend.type);
     if (typeof prepend === 'string') {
       node.children.unshift(textNode(prepend));
-    } else if (prepend.type === 'VirtualNode' || prepend.type === 'Widget') {
+    } else if (prepend.type === 'VirtualNode') {
       node.children.unshift(prepend);
     }
   });

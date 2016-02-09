@@ -2,6 +2,8 @@ import fs from 'fs';
 
 import { fromHtml, toHtml } from './html';
 import { processTree } from './process-tree';
+import path from 'path';
+import mkdirp from 'mkdirp';
 
 export default function({ config, input }) {
   const inputFile = fs.readFileSync(input, { encoding: 'utf8' });
@@ -34,6 +36,20 @@ export default function({ config, input }) {
     }
   });
   const newHtml = toHtml(tree[0]);
-  console.log('result', newHtml);
+
+  if (config.outputFile) {
+    writeToFile(newHtml, config.outputFile);
+  } else {
+    console.log(newHtml);
+  }
+}
+
+function writeToFile(html, outfile) {
+  const dirsToMake = path.dirname(outfile);
+  mkdirp(dirsToMake, function(e) {
+    // TODO: deal with error here
+    console.log('Wrote to', outfile);
+    fs.writeFile(outfile, html);
+  });
 
 }
