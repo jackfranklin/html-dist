@@ -6,9 +6,7 @@ import path from 'path';
 import mkdirp from 'mkdirp';
 
 export default function({ config, input }) {
-  const inputFile = fs.readFileSync(input, { encoding: 'utf8' });
-
-  let tree = fromHtml(inputFile);
+  let tree = fromHtml(input);
 
   // TODO: move this into a module with tree fns
   tree = tree.filter((item) => {

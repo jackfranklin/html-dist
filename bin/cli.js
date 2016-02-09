@@ -11,8 +11,13 @@ var configPath = path.join(process.cwd(), argv.config);
 
 var config = require(configPath).default;
 
-htmlDist.run({
-  config,
-  input: argv.input
+fs.readFile(argv.input, {
+  encoding: 'utf8'
+}, function(err, input) {
+  htmlDist.run({
+    config,
+    input
+  });
 });
+
 
