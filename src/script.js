@@ -8,5 +8,5 @@ export default function({ src, contents }) {
     node = new Node('script', { src }, []);
   }
 
-  return toHtml(node);
+  return node;
 };
