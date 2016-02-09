@@ -20,15 +20,14 @@ export default function({ config, input }) {
   const head = htmlChildren.find((node) => node.tagName === 'head');
 
   // TODO: process the head!
-  // const newHead = processTree(config, head);
+  const newHead = processTree(config, head);
   const newBody = processTree(config, body);
 
   const newHtmlChildren = htmlChildren.map((child) => {
     if (child.tagName === 'body') {
       return newBody;
     } else if (child.tagName === 'head') {
-      return child;
-      // return newHead;
+      return newHead;
     } else {
       return child;
     }

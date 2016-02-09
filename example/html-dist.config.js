@@ -6,13 +6,11 @@ import {
 
 export default {
   // TODO: make inputFile be here and not CLI arg?
-  outputFile: 'example/dist/index.html',
+  // outputFile: 'example/dist/index.html',
   head: {
-    edits: [
-      function(html) {
-        $('link').removeAll();
-      },
-    ]
+    tree: function(tree) {
+      return tree.remove('script');
+    }
   },
   body: {
     appends: [
