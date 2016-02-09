@@ -32,6 +32,9 @@ export default function({ config, input }) {
       return child;
     }
   });
+
+  tree[0].children = newHtmlChildren;
+
   const newHtml = toHtml(tree[0]);
 
   if (config.outputFile) {

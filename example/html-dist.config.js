@@ -9,7 +9,10 @@ export default {
   // outputFile: 'example/dist/index.html',
   head: {
     tree: function(tree) {
-      return tree.remove('script');
+      return tree.replaceWith([
+        script({ src: 'hello.js' }),
+      ]);
+      // return tree.remove('script');
     }
   },
   body: {

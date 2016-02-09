@@ -10,7 +10,8 @@ function processTree(allConfig, node) {
 
   // if you define tree, nothing else is allowed
   if (config.tree) {
-    return config.tree.call(null, treeManipulator(node));
+    const treeManip = config.tree.call(null, treeManipulator(node));
+    return treeManip;
   } else {
     let newNode = prepend(node, config.prepends || []);
     return append(node, config.appends || []);
