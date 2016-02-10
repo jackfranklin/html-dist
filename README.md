@@ -4,6 +4,12 @@ __Note: `html-dist` is being completely rewritten. If you want the old version, 
 
 Easily manipulate HTML files by removing and inserting elements.
 
+__VERY WIP!__
+
+```
+npm install --save-dev html-dist@0.2.0
+```
+
 ## Why?
 
 The problem that lead to me creating html-dist was deploying front-end only projects. In development mode I tend to have an HTML file set up for development. For example, an HTML file for a [jspm](http://jspm.io) project might look like so:
