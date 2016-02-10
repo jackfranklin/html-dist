@@ -8,6 +8,7 @@ export function treeManipulator(tree) {
 class TreeManipulator {
   constructor(tree) {
     this.tree = tree;
+    this.tagName = tree.tagName;
   }
 
   remove(query) {
@@ -22,8 +23,9 @@ class TreeManipulator {
     return this;
   }
 
-  replaceWith(children, attributes = []) {
-    return new Node('head', attributes, children);
+  replaceWith(children, attributes = {}) {
+    // TODO: should we take attributes from the existing top level node?
+    return treeManipulator(new Node(this.tagName, attributes, children));
   }
 }
 
