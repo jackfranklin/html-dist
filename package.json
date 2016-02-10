@@ -9,7 +9,7 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "mocha --require babel-core/register test",
-    "cli-example": "node bin/cli.js --config example/html-dist.config.js --input example/index.html",
+    "cli-example": "node bin/cli.js --config example/html-dist.config.js --input example/index.html --jsHash 1234",
     "babel": "babel src -d lib"
   },
   "bin": {
@@ -26,7 +26,7 @@
     "cheerio": "^0.20.0",
     "html-minifier": "^0.7.0",
     "html-to-vdom": "^0.7.0",
-    "lodash": "^3.6.0",
+    "lodash": "^3.10.1",
     "mkdirp": "^0.5.1",
     "vdom-to-html": "^2.2.0",
     "virtual-dom": "^2.1.1",

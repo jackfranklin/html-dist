@@ -1,6 +1,7 @@
 import {
   script,
-  googleAnalytics
+  googleAnalytics,
+  args
 } from '../src/index';
 
 import { fromHtml } from '../src/html';
@@ -15,7 +16,7 @@ export default {
     appends: [
       fromHtml('<div>FOO</div>'),
       script({
-        src: 'bundle.js'
+        src: `bundle-${args.jsHash}.js`
       }),
       googleAnalytics('UA-1234')
     ]
