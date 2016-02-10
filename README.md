@@ -40,12 +40,14 @@ import {
 } from 'html-dist';
 
 export default {
-  // where to write to?
+  // where to write to
   outputFile: 'dist/index.html',
   head: {
+    // in the <head>, remove any elements matching the 'script' CSS selector
     remove: 'script'
   },
   body: {
+    // append the following things to the body
     appends: [
       script({
         src: `bundle.jsHash}.js`

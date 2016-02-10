@@ -13,12 +13,20 @@ function processTree(allConfig, node) {
     const treeManip = config.tree.call(null, treeManipulator(node));
     return treeManip.tree;
   } else {
-    let newNode = prepend(node, config.prepends || []);
+    let newNode = node;
+    if (config.remove) {
+      newNode = remove(newNode, config.remove);
+    }
+
+    newNode = prepend(newNode, config.prepends || []);
     return append(node, config.appends || []);
   }
 }
 
-// TODO: both of these should use TreeManipulator
+function remove(node, selector) {
+  return treeManipulator(node).remove(selector).tree;
+}
+
 function prepend(node, prepends) {
   return manipulateTree(node, prepends.reverse(), 'prepend');
 }
