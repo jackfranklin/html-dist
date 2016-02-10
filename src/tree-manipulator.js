@@ -23,6 +23,11 @@ class TreeManipulator {
     return this;
   }
 
+  prepend(node) {
+    this.tree.children.unshift(node);
+    return this;
+  }
+
   replaceWith(children, attributes = {}) {
     // TODO: should we take attributes from the existing top level node?
     return treeManipulator(new Node(this.tagName, attributes, children));

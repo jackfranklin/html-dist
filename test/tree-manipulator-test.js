@@ -45,4 +45,22 @@ describe('TreeManipulator', () => {
       expect(newTree.children[1].properties).to.eql({ src: 'test.js' });
     });
   });
+
+  describe('#prepend', () => {
+    it('can take a node and prepend it', () => {
+      const instance = treeManipulator(head(input));
+      const newTree = instance.prepend(script({ src: 'test.js' })).tree;
+      expect(newTree.children.length).to.eql(2);
+      expect(newTree.children.map((c) => c.tagName)).to.eql(['script', 'title']);
+      expect(newTree.children[0].properties).to.eql({ src: 'test.js' });
+    });
+  });
+
+  describe('#remove', () => {
+    it('removes any nodes that match the selector', () => {
+      const instance = treeManipulator(head(input));
+      const newTree = instance.remove('title').tree;
+      expect(newTree.children.length).to.eql(0);
+    });
+  });
 });
