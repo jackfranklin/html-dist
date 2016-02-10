@@ -34,9 +34,7 @@
     "yargs": "^3.6.0"
   },
   "devDependencies": {
-    "babel-tape-runner": "^2.0.0",
     "expect.js": "^0.3.1",
-    "mocha": "^2.2.1",
-    "tape": "^4.4.0"
+    "mocha": "^2.2.1"
   }
 }
