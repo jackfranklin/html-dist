@@ -1,9 +1,10 @@
 import select from 'vtree-select';
-import { Node } from './html';
+import { Node, LINEBREAK_NODE } from './html';
 
 export function treeManipulator(tree) {
   return new TreeManipulator(tree);
 }
+
 
 class TreeManipulator {
   constructor(tree) {
@@ -19,12 +20,13 @@ class TreeManipulator {
   }
 
   append(node) {
-    this.tree.children.push(node);
+    this.tree.children = this.tree.children.concat([node, LINEBREAK_NODE]);
     return this;
   }
 
   prepend(node) {
     this.tree.children.unshift(node);
+    this.tree.children.unshift(LINEBREAK_NODE);
     return this;
   }
 

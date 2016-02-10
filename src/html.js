@@ -6,6 +6,8 @@ import convertHtml from 'html-to-vdom';
 
 const textNode = (text) => new VText(text);
 
+const LINEBREAK_NODE = textNode('\n');
+
 const fromHtml = convertHtml({
   VNode,
   VText
@@ -17,5 +19,6 @@ export {
   Node,
   textNode,
   toHtml,
-  fromHtml
+  fromHtml,
+  LINEBREAK_NODE
 }

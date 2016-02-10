@@ -5,6 +5,9 @@ import { processTree } from './process-tree';
 import path from 'path';
 import mkdirp from 'mkdirp';
 
+import { minify } from 'html-minifier';
+import html from 'html';
+
 export default function({ config, input }) {
   let tree = fromHtml(input);
 
@@ -35,7 +38,16 @@ export default function({ config, input }) {
 
   tree[0].children = newHtmlChildren;
 
-  const newHtml = toHtml(tree[0]);
+  let newHtml = toHtml(tree[0]);
+
+  if (config.minify === true) {
+    newHtml = minify(newHtml, {
+      collapseWhitespace: true,
+    });
+  } else {
+    // TODO: indent size being customisable would be cool
+    newHtml = html.prettyPrint(newHtml, { indent_size: 2 });
+  }
 
   if (config.outputFile) {
     writeToFile(newHtml, config.outputFile);
