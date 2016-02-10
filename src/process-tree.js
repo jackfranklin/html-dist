@@ -18,6 +18,7 @@ function processTree(allConfig, node) {
   }
 }
 
+// TODO: both of these should use TreeManipulator
 function prepend(node, prepends) {
   prepends.reverse().forEach((prepend) => {
     if (typeof prepend === 'string') {

@@ -1,34 +1,23 @@
 import {
   script,
-  googleAnalytics,
-  htmlComment
+  googleAnalytics
 } from '../src/index';
+
+import { fromHtml } from '../src/html';
 
 export default {
   // TODO: make inputFile be here and not CLI arg?
-  // outputFile: 'example/dist/index.html',
+  outputFile: 'example/dist/index.html',
   head: {
-    tree: function(head) {
-      // return head.replaceWith([
-      //   script({ src: 'hello.js' }),
-      // ]);
-      return head.remove('script').append(script({ src: 'foo.js' }));
-    }
+    tree: (head) => head.remove('script')
   },
   body: {
     appends: [
-      googleAnalytics('UA-12345-1'),
+      fromHtml('<div>FOO</div>'),
       script({
         src: 'bundle.js'
       }),
-      script({
-        contents: "System.import('app/main')"
-      })
-    ],
-    prepends: [
-      script({
-        src: 'test.js'
-      })
+      googleAnalytics('UA-1234')
     ]
   }
 }
