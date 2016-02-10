@@ -9,6 +9,16 @@ describe('process()', () => {
     input = fromHtml('<html><body><p>Hello</p></body></html>');
   });
 
+  describe('removing', () => {
+    it('can remove any elements that match a CSS selector', () => {
+      const result = processTree({
+        body: { remove: 'p' }
+      }, input.children.find((node) => node.tagName === 'body'));
+      // TODO: write nice assertions so we can assert on VTrees
+      expect(toHtml(result)).to.contain('<body></body>');
+    });
+  });
+
   describe('prepending', () => {
     it('can prepend to the body', () => {
       const result = processTree({
