@@ -19,8 +19,8 @@ function processTree(allConfig, node) {
       newNode = remove(newNode, config.remove);
     }
 
-    newNode = prepend(newNode, [LINEBREAK_NODE].concat(config.prepends) || []);
-    return append(node, config.appends.concat([LINEBREAK_NODE]) || []);
+    newNode = prepend(newNode, config.prepends || []);
+    return append(node, config.appends || []);
   }
 }
 

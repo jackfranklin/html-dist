@@ -20,13 +20,12 @@ class TreeManipulator {
   }
 
   append(node) {
-    this.tree.children = this.tree.children.concat([node, LINEBREAK_NODE]);
+    this.tree.children.push(node);
     return this;
   }
 
   prepend(node) {
     this.tree.children.unshift(node);
-    this.tree.children.unshift(LINEBREAK_NODE);
     return this;
   }
 
