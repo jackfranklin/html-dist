@@ -1,4 +1,4 @@
-__Note: `html-dist` is being completely rewritten. If you want the old version, install `html-dist@0.1.0` and read [this README](https://github.com/jackfranklin/html-dist/blob/22eba9e55364932d1863fead9526df706a5822cf/README.md)__
+__Note: `html-dist` is being completely rewritten. If you want the old version, install `html-dist@0.1.0` and read [this README](https://github.com/jackfranklin/html-dist/blob/22eba9e55364932d1863fead9526df706a5822cf/README.md)__.
 
 # html-dist
 
