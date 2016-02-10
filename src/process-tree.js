@@ -20,25 +20,17 @@ function processTree(allConfig, node) {
 
 // TODO: both of these should use TreeManipulator
 function prepend(node, prepends) {
-  prepends.reverse().forEach((prepend) => {
-    if (typeof prepend === 'string') {
-      node.children.unshift(textNode(prepend));
-    } else if (prepend.type === 'VirtualNode') {
-      node.children.unshift(prepend);
-    }
-  });
-  return node;
+  return manipulateTree(node, prepends.reverse(), 'prepend');
 }
 
 function append(node, appends) {
-  appends.forEach((append) => {
-    if (typeof append === 'string') {
-      node.children.push(textNode(append));
-    } else if (append.type === 'VirtualNode') {
-      node.children.push(append);
-    }
-  });
-  return node;
+  return manipulateTree(node, appends, 'append');
+}
+
+function manipulateTree(node, ary, fnName) {
+  return ary.reduce((newNode, item) => {
+    return treeManipulator(newNode)[fnName](item).tree;
+  }, node);
 }
 
 export { processTree };
