@@ -12,4 +12,12 @@ describe('script()', () => {
     const result = script({ contents: 'abc' });
     expect(toHtml(result)).to.eql('<script>abc</script>');
   });
+
+  it('can take any random properties', () => {
+    const result = script({ type: 'text/javascript', 'data-foo': 2 });
+    expect(result.properties).to.eql({
+      type: 'text/javascript',
+      'data-foo': '2'
+    });
+  });
 });
