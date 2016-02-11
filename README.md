@@ -262,3 +262,39 @@ h('div#foo', 'hello');
 
 Will create a `div` with an id of `foo` and the contents `hello` inside. This function is provided by virtual-DOM, so [refer to its documentation](https://github.com/Matt-Esch/virtual-dom/tree/master/virtual-hyperscript) to see how to use it.
 
+## Passing extra information to html-dist
+
+Sometimes you'll need to pass `html-dist` some extra information, such as the location of your JavaScript file, so `html-dist` can insert a `script` tag with the right `src` attribute.
+
+The CLI lets you pass in any arbitrary arguments:
+
+```
+./html-dist --config my.config.js --input index.html --jsFile "bundle-1234.js"
+```
+
+In `my.config.js`, I can import `args` and have access to them:
+
+```js
+import {
+  script,
+  args
+} from 'html-dist';
+
+export default {
+  outputFile: 'dist/index.html',
+  minify: true,
+  head: {
+    remove: 'script'
+  },
+  body: {
+    appends: [
+      script({
+        src: args.jsFile
+      })
+    ]
+  }
+}
+```
+
+The resulting `dist/index.html` will contain `<script src='bundle-1234.js'></script>` within it.
+
