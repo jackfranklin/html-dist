@@ -185,11 +185,80 @@ Additionally, `remove`, `append` and `prepend` are chainable:
 head.remove('script').append(...).prepend(...);
 ```
 
+## Helpers for creating Elements
 
+The most common elements that need to be inserted are made easier by html-dist's helpers. You can import them into your configuration file:
 
+```javascript
+import { link, script, googleAnalytics } from 'html-dist';
+```
 
+### `link`
 
+Creates a new `link` element:
 
+```javascript
+import { link } from 'html-dist';
 
+link({ rel: 'stylesheet', type: 'text/css', href: 'style.css' })
+```
 
+### `script`
+
+Creates a new `script` element:
+
+```javascript
+import { script } from 'html-dist';
+
+script({ type: 'text/javascript', src: 'bundle.js' });
+```
+
+Additionally it can take a special `contents` property to be used to create a `script` tag with JS inside it:
+
+```javascript
+import { script } from 'html-dist';
+
+script({ contents: 'console.log("hello world")' });
+//=> <script>console.log("hello world")</script>
+```
+
+### `googleAnalytics`
+
+Takes your GA user agent and produces the Google Analytics snippet:
+
+```javascript
+import { googleAnalytics } from 'html-dist';
+
+googleAnalytics('UA-1234-X');
+```
+
+## Creating custom elements
+
+If `html-dist` doesn't provide a suitable helper, and you think it should, please raise an issue!
+
+There are two ways to create custom HTML:
+
+### `fromHtml`
+
+You can use the `fromHtml` helper from `html-dist/html`:
+
+```
+import { fromHtml } from 'html-dist/html';
+
+fromHtml('<div>HELLO</div>');
+```
+
+This will cause a new `div` to be inserted into the final HTML.
+
+### `h`
+
+You can use `h` to create custom DOM elements:
+
+```javascript
+import { h } from 'html-dist';
+
+h('div#foo', 'hello');
+```
+
+Will create a `div` with an id of `foo` and the contents `hello` inside. This function is provided by virtual-DOM, so [refer to its documentation](https://github.com/Matt-Esch/virtual-dom/tree/master/virtual-hyperscript) to see how to use it.
 
