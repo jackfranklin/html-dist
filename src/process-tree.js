@@ -7,7 +7,7 @@ function processTree(allConfig, node) {
   const nodeTag = node.tagName;
   const config = allConfig[nodeTag];
 
-  if (!config) return;
+  if (!config) return node;
 
   // if you define tree, nothing else is allowed
   if (config.tree) {
