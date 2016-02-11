@@ -1,6 +1,6 @@
 {
   "name": "html-dist",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Generates HTML with your minified JavaScript in it",
   "repository": {
     "type": "git",
@@ -10,7 +10,8 @@
   "scripts": {
     "test": "mocha --require babel-core/register test",
     "cli-example": "node bin/cli.js --config example/html-dist.config.js --input example/index.html --jsHash 1234",
-    "babel": "babel src -d lib"
+    "babel": "babel src -d lib",
+    "prepublish": "npm run babel"
   },
   "bin": {
     "html-dist": "bin/cli.js"
