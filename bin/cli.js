@@ -1,12 +1,24 @@
 #!/usr/bin/env node
 
-require('babel-register');
+var argv = require('yargs').demand(['config', 'input']).argv;
+
+if (argv.$0 === 'bin/cli.js') {
+  // development mode
+  require('babel-register');
+} else {
+  // shipped in node_modules so need to configure Babel some more
+  var transpileRegex = new RegExp("(node_modules/\html-dist)|(" + argv.config + ")");
+
+  require('babel-register')({
+    presets: ['es2015'],
+    only: transpileRegex
+  });
+}
 
 var _ = require('lodash');
 var htmlDist = require('../src/index');
 var fs = require('fs');
 var path = require('path');
-var argv = require('yargs').demand(['config', 'input']).argv;
 
 var userArgs = _.omit(argv, ['config', 'input', '$0', '_']);
 
