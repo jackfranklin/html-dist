@@ -80,5 +80,116 @@ Which will produce the following:
 
 4. Deploy `dist/index.html` to production.
 
+## Fundamentals of html-dist
+
+Under the hood html-dist uses the [virtual-dom](https://github.com/Matt-Esch/virtual-dom) library to manipulate all the HTML. It parses your HTML into a Virtual DOM tree which it then allows you to manipulate, before generating HTML from that virtual dom tree at the end of the process.
+
+This means if you want you can harness the full power of the virtual DOM to manipulate your HTML. However, for most use cases html-dist will provide helpers to make it easy for you. It's possible to use html-dist without ever dealing with the virtual DOM.
+
+## The configuration object
+
+The configuration file is fully ES2015 enabled (via Babel). The configuration object must be the default export:
+
+```javascript
+export default {
+  // configuration here
+}
+```
+
+Using a `.js` file rather than JSON also enables you to leave comments as you wish.
+
+The top level keys you can specify are:
+
+- `outputFile`: the path to write the generated HTML to. If not given the output will be printed to STDOUT.
+- `minfiy`: if set to `true`, the generated HTML will be minified. Else it will be formatted nicely.
+- `head`: an object of manipulations to make to the `<head>` element.
+- `body`: an object of manipulations to make to the `<body>` element.
+
+## Manipulation objects
+
+The object given as `head` or `body` also must specify certain keys.
+
+### Appends and Prepends
+
+The recommended way to use html-dist that should satisfy most use cases is through the keys `appends`, `prepends` and `remove`:
+
+- `remove: 'cssSelector'` removes any elements that match the given selector.
+- `prepends: [...]` prepend the given elements.
+- `appends: [...]` append the given elements.
+
+For example, given:
+
+```js
+head: {
+  remove: 'script'
+  prepends: [
+    script({ src: 'bundle.js' })
+  ],
+  appends: [
+    script({ src: 'other-bundle.js' })
+  ]
+}
+```
+
+The `<head>` element will first have all `script` tags removed (`remove` is always called first), it will then have `<script src='bundle.js'></script>` prepended and `<script src='other-bundle.js'></script>` appended.
+
+### Full control with `tree`
+
+If you'd like full control over the manipulations, you should define the `tree` function:
+
+```
+head: {
+  tree: function(head) {
+    // manipulate head here
+  }
+}
+```
+
+When the `tree` function is given it is the _only_ function called. It will be passed an object that you can use to manipulate the element. See "Manipulating Trees" below for the full documentation.
+
+## Manipulating Trees
+
+When you define a `tree` function in a manipulation object that function will be given an instance of `TreeManipulator`, which allows you to manipulate the tree as you like:
+
+```js
+head: {
+  tree: function(head) {
+    // head is an instance of `TreeManipulator`
+  }
+}
+```
+
+The following methods are available:
+
+- `remove(cssSelector)` removes all elements that match the given CSS selector. For example: `head.remove('script')`.
+- `append(node)` appends the new node as a child element. For example: `head.append(script({ src: 'test.js' }))`.
+- `prepend(node)` same as append, but prepends rather than appends.
+- `replaceWith(childrenArray)` replace the entire contents of the node with the new ones. For example:
+
+```js
+head: {
+  tree: function(head) {
+    return head.replaceWith([
+      script({ src: 'test.js' }),
+      googleAnalytics('UA-1234-1')
+    ]);
+  }
+}
+```
+
+That would replace the contents of your `<head>` with a script tag and the Google Analytics snippet.
+
+Additionally, `remove`, `append` and `prepend` are chainable:
+
+```js
+head.remove('script').append(...).prepend(...);
+```
+
+
+
+
+
+
+
 
 
