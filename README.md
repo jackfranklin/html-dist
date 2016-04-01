@@ -240,7 +240,7 @@ There are two ways to create custom HTML:
 
 ### `fromHtml`
 
-You can use the `fromHtml` helper from `html-dist/html`:
+You can use the `fromHtml` helper from `html-dist/lib/html`:
 
 ```
 import { fromHtml } from 'html-dist/html';
