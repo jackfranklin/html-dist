@@ -9,7 +9,7 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "mocha --require babel-core/register test",
-    "cli-example": "node bin/cli.js --config example/html-dist.config.js --input example/index.html --jsHash 1234",
+    "cli-example": "npm run babel && node bin/cli.js --config example/html-dist.config.js --input example/index.html --jsHash 1234",
     "babel": "babel src -d lib",
     "prepublish": "npm run babel"
   },

@@ -4,7 +4,7 @@ __Note: `html-dist` is being completely rewritten. If you want the old version, 
 
 Easily manipulate HTML files by removing and inserting elements.
 
-__VERY WIP!__
+__VERY WIP! Until V1.0.0 you should expect breaking changes in minor versions. EG: 0.2 -> 0.3 may include breaking changes__
 
 ```
 npm install --save-dev html-dist@0.2.0
@@ -40,12 +40,9 @@ Here's how I would do that with `html-dist`:
 2. Create a `html-dist.config.js` file (with full ES2015 support):
 
 ```javascript
-import {
-  script,
-  googleAnalytics,
-} from 'html-dist';
+var { script, googleAnalytics } = require('html-dist');
 
-export default {
+module.exports = {
   // where to write to
   outputFile: 'dist/index.html',
   // minify the HTML
@@ -65,6 +62,8 @@ export default {
   }
 }
 ```
+
+Note that the configuration file __is not parsed with Babel__. You may use whatever set of ES features your Node version supports.
 
 3. Run `html-dist`:
 
@@ -88,10 +87,12 @@ This means if you want you can harness the full power of the virtual DOM to mani
 
 ## The configuration object
 
-The configuration file is fully ES2015 enabled (via Babel). The configuration object must be the default export:
+__As of V0.3.0, the configuration file is NOT transpiled with Babel__.
+
+The configuration object must be the default export:
 
 ```javascript
-export default {
+module.exports = {
   // configuration here
 }
 ```
@@ -190,7 +191,7 @@ head.remove('script').append(...).prepend(...);
 The most common elements that need to be inserted are made easier by html-dist's helpers. You can import them into your configuration file:
 
 ```javascript
-import { link, script, googleAnalytics } from 'html-dist';
+var { link, script, googleAnalytics } = require('html-dist');
 ```
 
 ### `link`
@@ -198,7 +199,7 @@ import { link, script, googleAnalytics } from 'html-dist';
 Creates a new `link` element:
 
 ```javascript
-import { link } from 'html-dist';
+var link = require('html-dist').link;
 
 link({ rel: 'stylesheet', type: 'text/css', href: 'style.css' })
 ```
@@ -208,7 +209,7 @@ link({ rel: 'stylesheet', type: 'text/css', href: 'style.css' })
 Creates a new `script` element:
 
 ```javascript
-import { script } from 'html-dist';
+var script = require('html-dist').script;
 
 script({ type: 'text/javascript', src: 'bundle.js' });
 ```
@@ -216,7 +217,7 @@ script({ type: 'text/javascript', src: 'bundle.js' });
 Additionally it can take a special `contents` property to be used to create a `script` tag with JS inside it:
 
 ```javascript
-import { script } from 'html-dist';
+var script = require('html-dist').script;
 
 script({ contents: 'console.log("hello world")' });
 //=> <script>console.log("hello world")</script>
@@ -227,7 +228,7 @@ script({ contents: 'console.log("hello world")' });
 Takes your GA user agent and produces the Google Analytics snippet:
 
 ```javascript
-import { googleAnalytics } from 'html-dist';
+var googleAnalytics = require('html-dist').googleAnayltics;
 
 googleAnalytics('UA-1234-X');
 ```
@@ -243,7 +244,7 @@ There are two ways to create custom HTML:
 You can use the `fromHtml` helper from `html-dist/lib/html`:
 
 ```
-import { fromHtml } from 'html-dist/html';
+var fromHtml = require('html-dist/html');
 
 fromHtml('<div>HELLO</div>');
 ```
@@ -255,7 +256,7 @@ This will cause a new `div` to be inserted into the final HTML.
 You can use `h` to create custom DOM elements:
 
 ```javascript
-import { h } from 'html-dist';
+var h = require('html-dist').h;
 
 h('div#foo', 'hello');
 ```
@@ -275,12 +276,9 @@ The CLI lets you pass in any arbitrary arguments:
 In `my.config.js`, I can import `args` and have access to them:
 
 ```js
-import {
-  script,
-  args
-} from 'html-dist';
+var { script, args } = require('html-dist');
 
-export default {
+module.exports = {
   outputFile: 'dist/index.html',
   minify: true,
   head: {

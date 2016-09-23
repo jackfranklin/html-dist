@@ -1,9 +1,6 @@
-import {
-  script,
-  googleAnalytics
-} from '../src/index';
+var { script, googleAnalytics, args } = require('../lib/index');
 
-export default {
+module.exports = {
   outputFile: 'example/dist/index.html',
   minify: true,
   head: {
@@ -12,7 +9,7 @@ export default {
   body: {
     appends: [
       script({
-        src: 'bundle.js'
+        src: `bundle.${args.jsHash}.js`
       }),
       googleAnalytics('UA-1234')
     ]
