@@ -1,3 +1,6 @@
+# 0.3.0
+- __BREAKING__: config files are not run through Babel. This means they must be in a format that is supported by the Node version you're running.
+
 # 0.2.2
 - Fixed an issue that stopped the CLI running in npm installs
 - Fixed html-dist removing the entire `head` or `body` if you didn't supply any config for them

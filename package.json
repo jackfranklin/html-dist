@@ -1,6 +1,6 @@
 {
   "name": "html-dist",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Generates HTML with your minified JavaScript in it",
   "repository": {
     "type": "git",
