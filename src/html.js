@@ -6,6 +6,12 @@ import convertHtml from 'html-to-vdom';
 
 const textNode = (text) => new VText(text);
 
+const getDoctype = (input) => {
+  const doctypeRegex = /([\s\S]+)<html>/;
+  const doctypes = doctypeRegex.exec(input);
+  return doctypes ? doctypes[1] : '';
+}
+
 const LINEBREAK_NODE = textNode('\n');
 
 const fromHtml = convertHtml({
@@ -20,5 +26,6 @@ export {
   textNode,
   toHtml,
   fromHtml,
+  getDoctype,
   LINEBREAK_NODE
 }

@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-import { fromHtml, toHtml } from './html';
+import { fromHtml, toHtml, getDoctype } from './html';
 import { processTree } from './process-tree';
 import path from 'path';
 import mkdirp from 'mkdirp';
@@ -10,6 +10,7 @@ import html from 'html';
 
 export default function({ config, input }) {
   let tree = fromHtml(input);
+  const doctypes = getDoctype(input);
 
   // TODO: move this into a module with tree fns
   tree = tree.filter((item) => {
@@ -38,7 +39,7 @@ export default function({ config, input }) {
 
   tree[0].children = newHtmlChildren;
 
-  let newHtml = toHtml(tree[0]);
+  let newHtml = doctypes + toHtml(tree[0]);
 
   if (config.minify === true) {
     newHtml = minify(newHtml, {
