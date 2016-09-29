@@ -7,7 +7,7 @@ Easily manipulate HTML files by removing and inserting elements.
 __VERY WIP! Until V1.0.0 you should expect breaking changes in minor versions. EG: 0.2 -> 0.3 may include breaking changes__
 
 ```
-npm install --save-dev html-dist@0.2.0
+npm install --save-dev html-dist@0.3.1
 ```
 
 ## Why?
