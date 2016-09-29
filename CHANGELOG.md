@@ -1,3 +1,6 @@
+# 0.3.1
+- `html-dist` will now keep doctypes, rather than strip them out.
+
 # 0.3.0
 - __BREAKING__: config files are not run through Babel. This means they must be in a format that is supported by the Node version you're running.
 
