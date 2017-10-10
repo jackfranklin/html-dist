@@ -12,6 +12,7 @@ var userArgs = _.omit(argv, ['config', 'input', '$0', '_']);
 fs.readFile(argv.input, {
   encoding: 'utf8'
 }, function(err, input) {
+
   // must be done before requiring the config file
   htmlDist.setUserArgs(userArgs);
 

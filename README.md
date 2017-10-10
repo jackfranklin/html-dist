@@ -270,7 +270,7 @@ Sometimes you'll need to pass `html-dist` some extra information, such as the lo
 The CLI lets you pass in any arbitrary arguments:
 
 ```
-./html-dist --config my.config.js --input index.html --jsFile "bundle-1234.js"
+./html-dist --config my.config.js --input index.html --output dist/index.html --jsFile "bundle-1234.js"
 ```
 
 In `my.config.js`, I can import `args` and have access to them:

@@ -1,5 +1,6 @@
 import fs from 'fs';
 
+import { args } from './index';
 import { fromHtml, toHtml, getDoctype } from './html';
 import { processTree } from './process-tree';
 import path from 'path';
@@ -50,9 +51,10 @@ export default function({ config, input }) {
     newHtml = html.prettyPrint(newHtml, { indent_size: 2 });
   }
 
-  if (config.outputFile) {
-    writeToFile(newHtml, config.outputFile);
-  } else {
+  if (config.outputFile || args.output) {
+    writeToFile(newHtml, ((config.outputFile) ? config.outputFile : args.output));
+  }
+  else {
     console.log(newHtml);
   }
 }
