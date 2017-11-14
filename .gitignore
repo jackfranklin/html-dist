@@ -1,2 +1,5 @@
 lib
 example/dist
+node_modules
+.idea
+yarn.lock
