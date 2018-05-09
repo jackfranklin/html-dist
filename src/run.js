@@ -64,7 +64,7 @@ function writeToFile(html, outfile) {
   mkdirp(dirsToMake, function(e) {
     // TODO: deal with error here
     console.log('Wrote to', outfile);
-    fs.writeFile(outfile, html);
+    fs.writeFileSync(outfile, html);
   });
 
 }
