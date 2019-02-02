@@ -62,9 +62,9 @@ export default function({ config, input }) {
 function writeToFile(html, outfile) {
   const dirsToMake = path.dirname(outfile);
   mkdirp(dirsToMake, function(e) {
-    // TODO: deal with error here
-    console.log('Wrote to', outfile);
-    fs.writeFileSync(outfile, html);
+    fs.writeFileSync(outfile, html, () => {
+      console.log('Wrote to', outfile);
+    });
   });
 
 }

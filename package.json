@@ -1,6 +1,6 @@
 {
   "name": "html-dist",
-  "version": "0.3.2",
+  "version": "1.0.0",
   "description": "Generates HTML with your minified JavaScript in it",
   "repository": {
     "type": "git",
@@ -37,5 +37,8 @@
   "devDependencies": {
     "expect.js": "^0.3.1",
     "mocha": "^2.2.1"
+  },
+  "engines": {
+    "node": ">=11.0.0"
   }
 }
